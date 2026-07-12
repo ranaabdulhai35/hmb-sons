@@ -1,4 +1,4 @@
-// ===== HMB Sons — site behaviour =====
+// ===== HMB Sons site behaviour =====
 (function () {
   "use strict";
 
@@ -75,6 +75,18 @@
   );
   document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
 
+  // ---- Content images: styled emoji placeholder if the image fails ----
+  document.querySelectorAll("img[data-fallback]").forEach((img) => {
+    img.addEventListener("error", () => {
+      const fallback = document.createElement("div");
+      fallback.className = "img-fallback";
+      fallback.textContent = img.dataset.fallback;
+      fallback.setAttribute("role", "img");
+      fallback.setAttribute("aria-label", img.alt);
+      img.replaceWith(fallback);
+    });
+  });
+
   // ---- Partner logos: monogram chip if the image fails ----
   document.querySelectorAll(".partner-logo-img").forEach((img) => {
     img.addEventListener("error", () => {
@@ -103,8 +115,8 @@
         return;
       }
 
-      // No backend yet — acknowledge locally and reset the form.
-      status.textContent = "Thank you! Your query has been received — our team will get back to you shortly.";
+      // No backend yet, so acknowledge locally and reset the form.
+      status.textContent = "Thank you! Your query has been received. Our team will get back to you shortly.";
       form.reset();
       setTimeout(() => { status.textContent = ""; }, 6000);
     });
