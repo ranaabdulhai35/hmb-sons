@@ -459,7 +459,38 @@ a { color: var(--green-700); text-decoration: none; }
   font-size: 1.5rem;
   letter-spacing: 0.03em;
 }
+.avatar-photo {
+  display: block;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+  border: 3px solid var(--green-100);
+  box-shadow: 0 4px 14px rgba(27, 94, 32, 0.18);
+}
 .team-card h3 { font-size: 1.08rem; color: var(--ink-900); }
+.team-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+}
+.team-btn {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--green-100);
+  color: var(--green-900);
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+.team-btn svg { width: 19px; height: 19px; }
+.team-btn:hover { background: var(--green-700); color: var(--white); transform: translateY(-2px); }
+.team-btn.wa { background: #E3F7EC; color: #128C4A; }
+.team-btn.wa:hover { background: #25D366; color: var(--white); }
 .team-card .role {
   display: inline-block;
   font-family: var(--font-head);

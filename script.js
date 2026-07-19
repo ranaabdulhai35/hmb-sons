@@ -77,7 +77,7 @@
 
   // ---- Content images: styled emoji placeholder if the image fails ----
   document.querySelectorAll("img[data-fallback]").forEach((img) => {
-    img.addEventListener("error", () => {
+    onImgFail(img, () => {
       const fallback = document.createElement("div");
       fallback.className = "img-fallback";
       fallback.textContent = img.dataset.fallback;
@@ -87,9 +87,31 @@
     });
   });
 
+  // Runs `replace` when an image fails, even if it already failed before
+  // this script attached its listener.
+  function onImgFail(img, replace) {
+    if (img.complete && img.naturalWidth === 0) {
+      replace();
+      return;
+    }
+    img.addEventListener("error", replace);
+  }
+
+  // ---- Team photos: fall back to an initials avatar if the image is missing ----
+  document.querySelectorAll(".avatar-photo").forEach((img) => {
+    onImgFail(img, () => {
+      const avatar = document.createElement("div");
+      avatar.className = "avatar";
+      avatar.textContent = img.dataset.initials || "?";
+      avatar.setAttribute("role", "img");
+      avatar.setAttribute("aria-label", img.alt);
+      img.replaceWith(avatar);
+    });
+  });
+
   // ---- Partner logos: monogram chip if the image fails ----
   document.querySelectorAll(".partner-logo-img").forEach((img) => {
-    img.addEventListener("error", () => {
+    onImgFail(img, () => {
       const chip = document.createElement("span");
       chip.className = "logo-chip";
       chip.textContent = img.dataset.initials || "?";
