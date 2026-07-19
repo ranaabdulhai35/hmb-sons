@@ -1,0 +1,8 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/kissanbaithak", "destination": "https://kissan-baithak-production.up.railway.app/", "type": 302 },
+    { "source": "/kissanbaithek", "destination": "https://kissan-baithak-production.up.railway.app/", "type": 302 },
+    { "source": "/kissanbaithek.com", "destination": "https://kissan-baithak-production.up.railway.app/", "type": 302 }
+  ]
+}
