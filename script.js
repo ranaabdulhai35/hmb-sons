@@ -121,6 +121,24 @@
     });
   });
 
+  // ---- Email links: on desktop, open Gmail compose in a new tab ----
+  // (mailto: does nothing on PCs with no default mail app configured;
+  // phones keep the native behaviour and open the mail/Gmail app.)
+  const isMobileDevice = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (!isMobileDevice) {
+    document.querySelectorAll('a[href^="mailto:"]').forEach((a) => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        const addr = a.getAttribute("href").replace(/^mailto:/, "").split("?")[0];
+        window.open(
+          "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(addr),
+          "_blank",
+          "noopener"
+        );
+      });
+    });
+  }
+
   // ---- Contact form ----
   const form = document.getElementById("contactForm");
   if (form) {
