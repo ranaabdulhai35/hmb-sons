@@ -129,7 +129,7 @@ a { color: var(--green-700); text-decoration: none; }
 .nav-link.active { color: var(--green-700); }
 .nav-cta { margin-inline-start: 0.2rem; padding: 0.55rem 1.2rem; font-size: 0.86rem; }
 
-/* Kissan Baithak sister-site link */
+/* Kissan Baithek sister-site link */
 .nav-kb { color: var(--amber-700); font-weight: 600; }
 .nav-kb .ext { font-size: 0.72em; vertical-align: super; }
 .nav-kb:hover { color: var(--amber-500); }
