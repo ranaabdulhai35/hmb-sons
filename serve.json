@@ -1,8 +1,0 @@
-{
-  "cleanUrls": true,
-  "redirects": [
-    { "source": "/kissanbaithak", "destination": "https://kissanbaithek.com/", "type": 302 },
-    { "source": "/kissanbaithek", "destination": "https://kissanbaithek.com/", "type": 302 },
-    { "source": "/kissanbaithek.com", "destination": "https://kissanbaithek.com/", "type": 302 }
-  ]
-}
